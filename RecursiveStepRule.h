@@ -9,6 +9,8 @@
 #include <string>
 #include <set>
 
+#define NULL_STRING "#!NULL!#"
+
 using namespace std;
 
 class RecursiveStepRule {
@@ -18,7 +20,7 @@ private:
     int string_num;
 public:
     explicit RecursiveStepRule(string rule);
-    void add_strings_to_language(set<string>& language_string);
+    void add_strings_to_language(set<string>& language_string, unsigned long language_size, vector<string>& strings_to_add);
     string execute_rule(vector<string> language_strings);
 };
 
