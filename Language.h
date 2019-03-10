@@ -14,12 +14,16 @@ using namespace std;
 
 class Language {
 private:
+    int number_of_steps;
     vector<RecursiveStepRule> recursive_steps;
     set<string> language_generated;
+    vector<string> new_additions;
 
 public:
     explicit Language(const string& path);
     void recursive_step();
+    void all_steps();
+    void print_step(int step);
 };
 
 

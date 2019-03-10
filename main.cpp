@@ -2,10 +2,13 @@
 #include "Language.h"
 
 int main() {
-    Language language("../example.txt");
-    language.recursive_step();
-    language.recursive_step();
-    language.recursive_step();
-    int a = 0;
+    string file_path;
+
+    cout << "Input the file path\n";
+    cin >> file_path;
+
+    Language language(file_path);
+    language.all_steps();
+
     return 0;
 }

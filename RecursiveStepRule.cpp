@@ -7,15 +7,24 @@
 #define LANGUAGE_FINISHED 0
 #define ADDED_INDEX 1
 
+#include <map>
+
 RecursiveStepRule::RecursiveStepRule(string rule) {
     all_adding_chars.clear();
     steps.clear();
-    int current_id = -1;
     string_num = 0;
+
+    int current_id = -1;
+    map<char,int> indices;
+    int current_index = 0;
+
     for(const auto& it:rule){
         if(it >= 'u' && it <= 'z'){
             string_num++;
-            steps.push_back(it - 'u');
+            if(indices.find(it) == indices.end()){
+                indices.insert(make_pair(it, current_index++));
+            }
+            steps.push_back(indices[it]);
         }
         else {
             all_adding_chars.push_back(it);
