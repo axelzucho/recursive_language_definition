@@ -1,6 +1,6 @@
-## Language Generator
+# Language Generator
 
-#### Usage
+## Usage
 
 After downloading, run `make` in the downloaded directory.
 
@@ -10,7 +10,7 @@ It will ask for the path of the input file. An example of a valid input is: `exa
 
 You will then see the language generated. 
 
-#### Input file format
+## Input file format
 
 The input file should have three different lines, each line should be as follows:
 
@@ -39,6 +39,6 @@ write it as **"#!NULL!#"** (without the quotations). If you want to specify mult
     For example: `3`
     
 
- #### Author
+ ## Author
  
  Axel Zuchovicki - ITESM CSF
