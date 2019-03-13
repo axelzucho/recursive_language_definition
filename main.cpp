@@ -7,7 +7,9 @@ int main() {
     cout << "Input the file path\n";
     cin >> file_path;
 
+    // We just create a language with the data in the provided file.
     Language language(file_path);
+    // And then we execute all steps.
     language.all_steps();
 
     return 0;
