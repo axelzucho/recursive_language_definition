@@ -4,11 +4,15 @@
 
 After downloading, run `make` in the downloaded directory.
 
-
+![alt text](images_README/make_image.png)
 
 After running it, you will find the executable 'language_generator.out'. To run it, execute the command `./language_generator.out`.
 
+![alt text](images_README/execute_language.png)
+
 It will ask for the path of the input file. An example of a valid input is: `example.txt`.
+
+![alt text](images_README/filepath_and_result.png)
 
 You will then see the language generated. 
 
@@ -39,7 +43,8 @@ write it as **"#!NULL!#"** (without the quotations). If you want to specify mult
 3. __Step number__: Here you should enter a single int which will specify the amount of recursive steps to execute. 
     
     For example: `3`
-    
+
+There is also an example of this format in the `example.txt` file in the project directory.    
 
  ## Author
  

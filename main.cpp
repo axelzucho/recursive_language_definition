@@ -5,7 +5,7 @@ int main() {
     string file_path;
     bool generated;
 
-    cout << "Input the file path\n";
+    cout << "Please input the file path:\n";
     cin >> file_path;
 
     // We just create a language with the data in the provided file.
