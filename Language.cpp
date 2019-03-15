@@ -9,12 +9,14 @@
 using namespace std;
 
 
-Language::Language(const string &path) {
+Language::Language(const string &path, bool &generated) {
     fstream file;
     file.open(path);
     // Check if we could open the provided filepath.
     if (!file.is_open()) {
         cout << "File not opened correctly" << endl;
+        // Signal that the language was not generated.
+        generated = false;
         return;
     }
 
@@ -63,6 +65,9 @@ Language::Language(const string &path) {
     int step_num;
     file >> step_num;
     this->number_of_steps = step_num;
+
+    // Signal that the language was generated successfully.
+    generated = true;
 }
 
 void Language::recursive_step() {

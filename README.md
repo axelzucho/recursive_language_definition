@@ -4,6 +4,8 @@
 
 After downloading, run `make` in the downloaded directory.
 
+
+
 After running it, you will find the executable 'language_generator.out'. To run it, execute the command `./language_generator.out`.
 
 It will ask for the path of the input file. An example of a valid input is: `example.txt`.
