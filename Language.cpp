@@ -32,18 +32,19 @@ Language::Language(const string &path, bool &generated) {
         size_t current_index = line.find_first_of(',');
         // While there are still ','.
         while (current_index != string::npos) {
-            this->new_additions.push_back(line.substr(previous_index, current_index));
+            string to_add = line.substr(previous_index, current_index - previous_index);
+            this->new_additions.push_back(to_add);
             // Push the char into the language.
-            this->language_generated.insert(line.substr(previous_index, current_index));
+            this->language_generated.insert(to_add);
             previous_index = ++current_index;
             // Find the next ','.
             current_index = line.find_first_of(',', current_index);
         }
         // Add the last char after the last comma.
         if (!line.empty()) {
-            string string_to_add = line.substr(previous_index, line.length());
-            this->new_additions.push_back(line.substr(previous_index, line.length()));
-            this->language_generated.insert(line.substr(previous_index, line.length()));
+            string string_to_add = line.substr(previous_index, line.length() - previous_index);
+            this->new_additions.push_back(string_to_add);
+            this->language_generated.insert(string_to_add);
         }
     };
 
@@ -54,14 +55,14 @@ Language::Language(const string &path, bool &generated) {
     size_t current_index = line.find_first_of(',');
     while (current_index != string::npos) {
         // Creates a new Rule object with the string.
-        RecursiveStepRule recursive_step_rule(line.substr(previous_index, current_index));
+        RecursiveStepRule recursive_step_rule(line.substr(previous_index, current_index - previous_index));
         this->recursive_steps.push_back(recursive_step_rule);
         previous_index = ++current_index;
         current_index = line.find_first_of(',', current_index);
     }
     // Adds the last rule after the last comma.
     if (!line.empty()) {
-        RecursiveStepRule recursive_step_rule(line.substr(previous_index, line.length()));
+        RecursiveStepRule recursive_step_rule(line.substr(previous_index, line.length() - previous_index));
         this->recursive_steps.push_back(recursive_step_rule);
     }
 

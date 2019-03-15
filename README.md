@@ -16,6 +16,8 @@ It will ask for the path of the input file. An example of a valid input is: `exa
 
 You will then see the language generated. 
 
+Each printed step will show you the **new strings** added to the language in that specific step.
+
 ## Input file format
 
 The input file should have three different lines, each line should be as follows:

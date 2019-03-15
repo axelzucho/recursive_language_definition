@@ -7,7 +7,4 @@ $(MAIN): $(SOURCES)
 clean:
 	rm -f $(MAIN) *.o *.zip
 
-zip: clean
-	zip -r $(MAIN).zip $(SOURCES) Makefile
-
-.PHONY: clean zip
+.PHONY: clean
