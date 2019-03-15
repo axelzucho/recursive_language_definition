@@ -90,7 +90,7 @@ void Language::recursive_step() {
 void Language::print_step(int step) {
     cout << step << " times: ";
     // Iterates all the new additions to print them.
-    for (int i = 0; i < new_additions.size() - 1; ++i) {
+    for (unsigned int i = 0; i < new_additions.size() - 1; ++i) {
         cout << new_additions[i] << ", ";
     }
     cout << new_additions[new_additions.size() - 1] << endl;
