@@ -33,7 +33,7 @@ public:
 
     // Calculates the new strings to generate for this rule (computing all current language combinations),
     // and stores them in the strings_to_add vector.
-    void compute_new_strings(set<string>& language_string, unsigned long language_size, vector<string>& strings_to_add);
+    void compute_new_strings(set<string> &language_string, unsigned long language_size, vector<string> &strings_to_add);
 
     // Executes the rule for the given strings and returns the newly generated string.
     string execute_rule(vector<string> language_strings);

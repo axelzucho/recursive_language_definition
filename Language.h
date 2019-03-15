@@ -29,7 +29,7 @@ private:
 
 public:
     // Constructor: Parses the text in the file into rules, number of steps and baseline.
-    explicit Language(const string& path);
+    explicit Language(const string &path);
 
     // Executes one recursive step.
     void recursive_step();

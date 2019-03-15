@@ -48,8 +48,7 @@ Language::Language(const string &path) {
     size_t previous_index = 0;
     // Same as before, parses the rules.
     size_t current_index = line.find_first_of(',');
-    while (current_index != string::npos)
-    {
+    while (current_index != string::npos) {
         // Creates a new Rule object with the string.
         RecursiveStepRule recursive_step_rule(line.substr(previous_index, current_index));
         this->recursive_steps.push_back(recursive_step_rule);
@@ -74,13 +73,13 @@ void Language::recursive_step() {
     // Iterates all the rules, computing new strings, which stores them in the "strings_to_add" vector.
     // We can't add them directly to the language since strings computed in the first steps should not affect the later
     // rules.
-    for(auto& it: recursive_steps){
+    for (auto &it: recursive_steps) {
         it.compute_new_strings(language_generated, current_size, strings_to_add);
     }
     // Iterates all the newly generated strings.
-    for(const auto& it: strings_to_add){
+    for (const auto &it: strings_to_add) {
         // If that string wasn't already in the language.
-        if(language_generated.find(it) == language_generated.end()){
+        if (language_generated.find(it) == language_generated.end()) {
             // Adds it to both places.
             language_generated.insert(it);
             new_additions.push_back(it);
@@ -88,19 +87,19 @@ void Language::recursive_step() {
     }
 }
 
-void Language::print_step(int step){
+void Language::print_step(int step) {
     cout << step << " times: ";
     // Iterates all the new additions to print them.
-    for(int i = 0; i < new_additions.size() - 1; ++i){
+    for (int i = 0; i < new_additions.size() - 1; ++i) {
         cout << new_additions[i] << ", ";
     }
-    cout << new_additions[new_additions.size()-1] << endl;
+    cout << new_additions[new_additions.size() - 1] << endl;
 }
 
 void Language::all_steps() {
     cout << "Applying the recursive step:" << endl;
     print_step(0);
-    for(int i = 1; i <= number_of_steps; ++i){
+    for (int i = 1; i <= number_of_steps; ++i) {
         // For all steps. executes the recursive step and prints it.
         recursive_step();
         print_step(i);
