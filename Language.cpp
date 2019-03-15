@@ -41,7 +41,7 @@ Language::Language(const string &path, bool &generated) {
             current_index = line.find_first_of(',', current_index);
         }
         // Add the last char after the last comma.
-        if (!line.empty()) {
+        if (!line.empty() && !line.substr(previous_index, line.length() - previous_index).empty()) {
             string string_to_add = line.substr(previous_index, line.length() - previous_index);
             this->new_additions.push_back(string_to_add);
             this->language_generated.insert(string_to_add);
@@ -61,7 +61,7 @@ Language::Language(const string &path, bool &generated) {
         current_index = line.find_first_of(',', current_index);
     }
     // Adds the last rule after the last comma.
-    if (!line.empty()) {
+    if (!line.empty() && !line.substr(previous_index, line.length() - previous_index).empty()) {
         RecursiveStepRule recursive_step_rule(line.substr(previous_index, line.length() - previous_index));
         this->recursive_steps.push_back(recursive_step_rule);
     }
