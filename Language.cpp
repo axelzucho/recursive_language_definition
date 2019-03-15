@@ -40,9 +40,11 @@ Language::Language(const string &path, bool &generated) {
             current_index = line.find_first_of(',', current_index);
         }
         // Add the last char after the last comma.
-        string string_to_add = line.substr(previous_index, line.length());
-        this->new_additions.push_back(line.substr(previous_index, line.length()));
-        this->language_generated.insert(line.substr(previous_index, line.length()));
+        if(!line.empty()){
+            string string_to_add = line.substr(previous_index, line.length());
+            this->new_additions.push_back(line.substr(previous_index, line.length()));
+            this->language_generated.insert(line.substr(previous_index, line.length()));
+        }
     };
 
     // Gets the next line containing the rules.
@@ -58,8 +60,10 @@ Language::Language(const string &path, bool &generated) {
         current_index = line.find_first_of(',', current_index);
     }
     // Adds the last rule after the last comma.
-    RecursiveStepRule recursive_step_rule(line.substr(previous_index, line.length()));
-    this->recursive_steps.push_back(recursive_step_rule);
+    if(!line.empty()) {
+        RecursiveStepRule recursive_step_rule(line.substr(previous_index, line.length()));
+        this->recursive_steps.push_back(recursive_step_rule);
+    }
 
     // Finally, gets the number of steps to be executed.
     int step_num;
@@ -94,6 +98,13 @@ void Language::recursive_step() {
 
 void Language::print_step(int step) {
     cout << step << " times: ";
+
+    // Checks if there were no new additions.
+    if(new_additions.empty()){
+        cout << endl;
+        return;
+    }
+
     // Iterates all the new additions to print them.
     for (unsigned int i = 0; i < new_additions.size() - 1; ++i) {
         cout << new_additions[i] << ", ";
